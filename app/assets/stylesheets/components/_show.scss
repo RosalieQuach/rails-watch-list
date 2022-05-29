@@ -4,3 +4,13 @@
   margin: 30px;
   justify-content: space-around;
 }
+
+.show .container {
+  display: flex;
+  margin: 30px;
+}
+
+.show .container .avatar {
+  border-radius: 50%;
+  width: 100px;
+}

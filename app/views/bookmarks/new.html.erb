@@ -1,7 +1,17 @@
-<h2> Add a new bookmark </h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Add a new bookmark</h1>
+  </div>
+</div>
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.submit "Submit", class: 'btn btn-primary'  %>
-<% end %>
+
+<div class="bookmark">
+  <div class="container">
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie %>
+      <%= f.input :comment %>
+          <%=link_to 'Back to overview', root_path, class:"btn btn-primary"%>
+      <%= f.submit "Add", class: 'btn btn-primary'  %>
+    <% end %>
+  </div>
+</div>
