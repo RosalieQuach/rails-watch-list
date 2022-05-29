@@ -1,27 +1,33 @@
-<div class="container">
-
-  <b-list-group-item class="d-flex align-items-center">
-  <% if @list.photo.attached? %>
-    <%= cl_image_tag @list.photo.key, height: 50, crop: :fill, radius: 50 %>
-    <% else %>
-    <%image_tag("avatar.jpeg")%>
-    <% end %>
-    <h1><span class="mr-auto"><%= @list.name %></span></h1>
-  </b-list-group-item>
-
-<ul style="list-style: none;">
-<% @list.bookmarks.each do |bookmark|%>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=<%=bookmark.movie.poster_url%> alt="movie poster" width="200">
-  <div class="card-body">
-    <h5 class="card-title">Review:</h5>
-    <p class="card-text"><%=bookmark.comment%></p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><span class="mr-auto"><%= @list.name %>'s watch list</span></h1>
   </div>
 </div>
-<% end %>
-</ul>
 
-<%=link_to 'Back to overview', root_path, class:"btn btn-primary"%>
-<%=link_to 'Create a new bookmark', new_list_bookmark_path(@list), class:"btn btn-primary"%>
+<b-list-group-item class="d-flex align-items-center">
+  <% if @list.photo.attached? %>
+    <%= cl_image_tag @list.photo.key, height: 50, crop: :fill, radius: 50 %>
+  <% else %>
+    <%image_tag("avatar.jpeg")%>
+  <% end %>
+</b-list-group-item>
 
+<div class="show">
+    <ul style="list-style: none;">
+      <% @list.bookmarks.each do |bookmark|%>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src=<%=bookmark.movie.poster_url%> alt="movie poster" width="200">
+            <div class="card-body">
+              <h5 class="card-title">Comments:</h5>
+              <p class="card-text"><%=bookmark.comment%></p>
+            </div>
+        </div>
+      <% end %>
+    </ul>
 </div>
+
+
+  <div class="container">
+    <%=link_to 'Back to overview', root_path, class:"btn btn-primary"%>
+    <%=link_to 'New bookmark', new_list_bookmark_path(@list), class:"btn btn-primary"%>
+  </div>
